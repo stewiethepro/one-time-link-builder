@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="./assets/fonts/feather/feather.min.css">
+    <link rel="stylesheet" href="./assets/libs/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="./assets/libs/quill/dist/quill.core.css">
+    <link rel="stylesheet" href="./assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="./assets/libs/highlight.js/styles/vs2015.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="./assets/css/theme.min.css" id="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/custom.css">
+
+    <title>One Time Link Builder</title>
+  </head>
+  <body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
+
+    <!-- NAVBAR
+    ================================================== -->
+
+    <nav class="navbar navbar-vertical navbar-vertical-sm fixed-left navbar-expand-md navbar-transparent border-0">
+
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-md-5 col-lg-6 col-xl-5 px-lg-6 my-5">
+
+          <!-- Heading -->
+          <h1 class="display-4 text-center mb-3">
+            One Time Link Builder
+          </h1>
+
+          <!-- Subheading -->
+          <p class="text-muted text-center mb-5">
+            Paste a one time link, complete the fields and hit build.
+          </p>
+
+          <!-- Form -->
+          <form id="demoForm">
+
+            <!-- One time link input -->
+            <div class="form-group">
+
+              <div class="row">
+                <div class="col">
+
+                  <!-- Label -->
+                  <label>Paste One Time Link Here</label>
+
+                </div>
+              </div> <!-- / .row -->
+
+              <!-- Input group -->
+              <div class="input-group input-group-merge">
+
+                <!-- Input -->
+                <input id="oneTimeLink" type="text" class="form-control" placeholder="">
+
+              </div>
+
+            </div>
+            <!-- Name -->
+            <div class="form-group">
+
+              <div class="row">
+                <div class="col">
+
+                  <!-- Label -->
+                  <label>Customer name</label>
+
+                </div>
+              </div> <!-- / .row -->
+
+              <!-- Input group -->
+              <div class="input-group input-group-merge">
+
+                <!-- Input -->
+                <input id="name" type="text" class="form-control" placeholder="">
+
+              </div>
+
+            </div>
+
+            <!-- Email address -->
+            <div class="form-group">
+
+              <!-- Label -->
+              <label>Customer email</label>
+
+              <!-- Input -->
+              <input id="email" type="email" class="form-control" placeholder="">
+
+            </div>
+
+            <!-- 2 input row (company and budget) -->
+            <div class="form-row">
+              <div class="col-12 col-md-6 mb-3">
+                <!-- Company -->
+                <div class="form-group">
+
+                  <div class="row">
+                    <div class="col">
+
+                      <!-- Label -->
+                      <label>Customer company</label>
+
+                    </div>
+                  </div> <!-- / .row -->
+
+                  <!-- Input group -->
+                  <div class="input-group input-group-merge">
+
+                    <!-- Input -->
+                    <input id="company" type="text" class="form-control" placeholder="">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 mb-3">
+                <!-- Budget -->
+                <div class="form-group">
+
+                  <div class="row">
+                    <div class="col">
+
+                      <!-- Label -->
+                      <label>Budget</label>
+
+                    </div>
+                  </div> <!-- / .row -->
+
+                  <!-- Input group -->
+                  <div class="input-group input-group-merge">
+                    <select id="budget" form="demoForm" class="form-control" data-toggle="select">
+                      <option disabled selected>Select your budget</option>
+                      <option>Under $1000</option>
+                      <option>$1000 to $5000</option>
+                      <option>$5000 to $10000</option>
+                      <option>Over $10000</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-lg btn-block btn-primary mb-3 mt-2">
+              Build link
+            </button>
+
+          </form>
+
+        </div>
+        <div class="col-12 col-md-7 col-lg-6 col-xl-7 d-none d-lg-block">
+
+          <!-- Image -->
+          <div class="bg-cover vh-100 mt-n1 mr-n3" style="background-image: url(assets/img/covers/building-blocks.jpg);">
+          </div>
+
+        </div>
+
+        <!-- Dynamic One Time Link Modal -->
+        <div class="modal fade show" id="dynamicOneTimeLinkModal" tabindex="-1" style="display: none; padding-left: 0px;" aria-modal="true" role="dialog">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-card card">
+                <!-- Modal Header -->
+                <div class="card-header">
+                  <div class="row d-flex align-items-center justify-content-between">
+                    <!-- Thumbs up -->
+                    <div class="col-4 text-left">
+
+                      <h1 class="card-header-title">
+                      &#128077;
+                      </h1>
+
+                    </div>
+                    <!-- End Thumbs up -->
+                    <!-- Title -->
+                    <div class="col-4 text-center">
+
+                      <h3 class="card-header-title" id="modalTitle">
+                      Grab your link!
+                      </h3>
+
+                    </div>
+                    <!-- End Title -->
+                    <!-- Close button -->
+                    <div class="col-4 text-right">
+
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+
+                    </div>
+                    <!-- End Close button -->
+                  </div>
+                </div>
+                <!-- End Modal Header -->
+                <!-- Modal Body -->
+                <div class="card-body">
+                  <!-- One time link -->
+                  <div class="comment-body card-one-time-link">
+
+                    <div class="row">
+                      <a class="one-time-link" id="oneTimeLinkToCopy" href=""></a>
+                    </div>
+
+                  </div>
+                  <!-- End One time link -->
+                  <!-- Copy button -->
+                  <div class="row d-flex justify-content-center">
+                    <button type="button" id="copyButton" class="btn btn-primary mt-4" data-clipboard-target="#oneTimeLinkToCopy" data-toggle="tooltip" title="Copy to clipboard" data-original-title="Copy to clipboard" data-placement="bottom">Copy Link</button>
+                  </div>
+                  <!-- End Copy button -->
+                </div>
+                <!-- End Modal Body -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Dynamic One Time Link Modal -->
+
+      </div> <!-- / .row -->
+    </div>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/libs/@shopify/draggable/lib/es5/draggable.bundle.legacy.js"></script>
+    <script src="./assets/libs/autosize/dist/autosize.min.js"></script>
+    <script src="./assets/libs/chart.js/dist/Chart.min.js"></script>
+    <script src="./assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="./assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="./assets/libs/highlightjs/highlight.pack.min.js"></script>
+    <script src="./assets/libs/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="./assets/libs/list.js/dist/list.min.js"></script>
+    <script src="./assets/libs/quill/dist/quill.min.js"></script>
+    <script src="./assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="./assets/libs/chart.js/Chart.extension.min.js"></script>
+
+    <!-- Theme JS -->
+    <script src="./assets/js/theme.min.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="./assets/js/select2.js"></script>
+
+    <!-- Build-link JS -->
+    <script src="./assets/js/build-link.js"></script>
+
+    <!-- Clipboard JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+
+    <!-- Initialization of clipboard -->
+
+    <script>
+
+    var copyButton = document.getElementById('copyButton');
+    var clipboard = new ClipboardJS(copyButton);
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+        setTooltip(e.trigger, 'Copied!');
+        e.clearSelection();
+        setTimeout(function () {
+          $('#dynamicOneTimeLinkModal').modal('hide');
+        }, 1000);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+        setTooltip(e.trigger, 'Failed!');
+        e.clearSelection();
+    });
+
+    </script>
+
+  </body>
+</html>
